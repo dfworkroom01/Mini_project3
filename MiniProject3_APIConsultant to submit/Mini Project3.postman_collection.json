@@ -1,0 +1,94 @@
+{
+	"info": {
+		"_postman_id": "778c070e-a0da-4dbc-8419-bc90b0e24421",
+		"name": "Mini Project3",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "33344687"
+	},
+	"item": [
+		{
+			"name": "http://localhost:5001/api/auth/register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"janesmith@example.com\",\r\n  \"password\": \"password\"\r\n    \r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:5001/api/auth/register"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:5001/api/clients",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"name\": \"Jim Brown\",\r\n\"email\": \"jom_brown@example.com\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:5001/api/clients"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:5001/api/clients/1",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:5001/api/clients/1"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:5001/api/clients/1",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsImlhdCI6MTczMTkxOTMzOCwiZXhwIjoxNzMxOTIyOTM4fQ.aVPYQnrHePlyBkgXaoK_1_SKITgtb8OBhKc7EsmgYvE"
+					}
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"name\": \"Jim Brown\",\r\n\"email\": \"jim_brown@example.com\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:5001/api/clients/1"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:5001/api/users/1",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsImlhdCI6MTczMTkxOTMzOCwiZXhwIjoxNzMxOTIyOTM4fQ.aVPYQnrHePlyBkgXaoK_1_SKITgtb8OBhKc7EsmgYvE"
+					}
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": "http://localhost:5001/api/users/1"
+			},
+			"response": []
+		}
+	]
+}
