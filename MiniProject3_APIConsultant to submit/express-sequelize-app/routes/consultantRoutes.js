@@ -15,13 +15,37 @@ router.post('/', async (req, res) => {
   }
 });
 
-// Get all consultants (no authentication required)
 router.get('/', async (req, res) => {
   try {
-    const consultants = await Consultant.findAll();
-    res.json(consultants);
+    // Get page and limit from query parameters, with defaults
+    const page = parseInt(req.query.page) || 1; // Default to page 1 if not provided
+    const limit = parseInt(req.query.limit) || 10; // Default to 10 if limit not provided
+    const offset = (page - 1) * limit; // Calculate the offset for pagination
+
+    // Fetch consultants with the calculated limit and offset
+    const consultants = await Consultant.findAll({
+      limit: limit,
+      offset: offset
+    });
+
+    // Get the total count of consultants for pagination info
+    const totalConsultants = await Consultant.count();
+
+    // Calculate the total number of pages
+    const totalPages = Math.ceil(totalConsultants / limit);
+
+    // Return the consultants and pagination info
+    res.json({
+      consultants,
+      pagination: {
+        currentPage: page,
+        totalPages: totalPages,
+        totalConsultants: totalConsultants,
+        limit: limit
+      }
+    });
   } catch (error) {
-    res.status(500).json({ message: 'Error fetching consultants' });
+    res.status(500).json({ message: 'Error fetching consultants', error: error.message });
   }
 });
 

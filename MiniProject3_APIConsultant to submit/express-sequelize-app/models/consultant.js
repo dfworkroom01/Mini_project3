@@ -11,12 +11,10 @@ const Consultant = sequelize.define('Consultant', {
     type: DataTypes.STRING,
     allowNull: false
   },
-  
-    sequelize,
-    modelName: 'Consultant',
-    tableName: 'consultants',  // The table name in  database
-    timestamps: true,          // Include createdAt and updatedAt fields
-  },
-);
+ }, {
+    
+    tableName: 'consultants',
+  timestamps: true
+});
 
 module.exports = Consultant;

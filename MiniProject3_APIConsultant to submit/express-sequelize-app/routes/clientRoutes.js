@@ -62,7 +62,7 @@ router.put('/:clientId', async (req, res) => {
 });
 
 // Delete a client 
-router.delete('/:clientId', async (req, res) => {
+router.delete('/:clientId', auth, async (req, res) => {
   const { clientId } = req.params;
 
   try {
